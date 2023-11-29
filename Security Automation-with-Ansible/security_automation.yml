@@ -1,0 +1,17 @@
+---
+- name: Advanced Ansible Playbook
+  hosts: network
+  gather_facts: no
+
+  roles:
+    - role: forescout_integration
+    - role: security_patch_implementation
+    - role: compliance_check
+
+  handlers:
+    - name: restart network service
+      ios_command:
+        commands: 
+          - command: 'reload'
+            prompt: 'System configuration has been modified. Save? [yes/no]:'
+            answer: 'yes'
