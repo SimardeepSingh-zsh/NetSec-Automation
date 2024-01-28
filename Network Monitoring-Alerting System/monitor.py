@@ -28,7 +28,7 @@ for device in devices:
             print(' = '.join([x.prettyPrint() for x in varBind]))
 
 # Step 4: Database Storage
-# This is a simplified example. In a real-world application, you'd want to use a database ORM like SQLAlchemy.
+
 import sqlite3
 conn = sqlite3.connect('network_monitor.db')
 c = conn.cursor()
@@ -36,7 +36,7 @@ c.execute('''CREATE TABLE metrics
              (date text, ip text, metric text, value real)''')
 
 # Step 5: Alerting Mechanism
-# This is a very basic example. You'd want to implement more sophisticated alerting logic.
+
 def check_threshold(ip, metric, value):
     if metric == "cpu" and value > 90:
         print(f"ALERT: CPU usage on {ip} is over 90%!")
