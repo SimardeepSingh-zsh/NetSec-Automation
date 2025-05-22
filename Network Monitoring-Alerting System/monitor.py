@@ -9,11 +9,30 @@ devices = [
 ]
 
 # Step 3: Data Collection
+from os import getpid
 from pysnmp.hlapi import *
+
+def SnmpEngine():
+    raise NotImplementedError
+
+def CommunityData(community, mpModel):
+    raise NotImplementedError
+
+def UdpTransportTarget(param1, param2=161):
+    raise NotImplementedError
+
+def ContextData():
+    raise NotImplementedError
+
+def ObjectType(param1):
+    raise NotImplementedError
+
+def ObjectIdentity(param1, param2, param3):
+    raise NotImplementedError
 
 for device in devices:
     errorIndication, errorStatus, errorIndex, varBinds = next(
-        getCmd(SnmpEngine(),
+        getpid(SnmpEngine(),
                CommunityData(device["community"], mpModel=1),
                UdpTransportTarget((device["ip"], 161)),
                ContextData(),
